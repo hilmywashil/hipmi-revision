@@ -1,6 +1,6 @@
 @extends ('layouts.app')
 
-@section('title', 'Buku Informasi Anggota - HIPMI Jawa Barat')
+@section('title', 'Buku Informasi Pengurus - HIPMI Jawa Barat')
 <link rel="stylesheet" 
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
 <style>
@@ -38,7 +38,7 @@
 @section('content')
     <section class="page-banners">
                 <div class="page-banner">
-        <h1>Buku Informasi Anggota</h1>
+        <h1>Buku Informasi Pengurus</h1>
         <p>Berisi informasi mengenai anggota kami</p>
         </div>
     </section>

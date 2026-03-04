@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', $anggota->nama_usaha . ' - Buku Informasi Anggota HIPMI Jawa Barat')
+@section('title', $anggota->nama_usaha . ' - Buku Informasi Pengurus HIPMI Jawa Barat')
 
 @section('content')
     <section class="page-banner-2">

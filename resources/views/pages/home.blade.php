@@ -124,7 +124,7 @@
     </section>
     <section class="buku-informasi-home">
         <div class="green-accent" style="align-self: center;"></div>
-        <h2>Buku Informasi Anggota HIPMI Jabar</h2>
+        <h2>Buku Informasi Pengurus HIPMI Jabar</h2>
         <div class="buku-informasi-home-content">
             <div class="owl-carousel anggota-carousel">
                 @forelse($anggotaList as $anggota)
@@ -1474,8 +1474,8 @@
 
 @push('scripts')
     <script>
-        // Initialize Owl Carousel untuk Buku Informasi Anggota
-        // Initialize Owl Carousel untuk Buku Informasi Anggota
+        // Initialize Owl Carousel untuk Buku Informasi Pengurus
+        // Initialize Owl Carousel untuk Buku Informasi Pengurus
         document.addEventListener('DOMContentLoaded', function () {
             const carousel = $('.anggota-carousel');
 

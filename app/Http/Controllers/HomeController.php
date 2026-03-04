@@ -88,7 +88,7 @@ class HomeController extends Controller
             'totalKatalog',          // Info card: total katalog
             'misi',                  // Section Misi dengan alternating layout
             'totalAnggota',          // Info card: total anggota
-            'anggotaList',           // Buku Informasi Anggota carousel
+            'anggotaList',           // Buku Informasi Pengurus carousel
             'totalUmkm',             // Info card: total UMKM
             'kegiatanBerita',        // Informasi Kegiatan BPD (auto-rotate)
             'dokumentasiBerita',     // Berita & Dokumentasi
