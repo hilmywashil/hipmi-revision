@@ -277,9 +277,8 @@ body {
 }
 
 @media (max-width: 1024px) {
-    .page-banner {
-        padding: 50px;
-        text-align: center;
+    .page-banners {
+        padding: 50px 20px;
     }
 
     .page-banner h1 {

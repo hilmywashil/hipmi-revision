@@ -66,7 +66,7 @@ nav {
 @media (max-width: 1024px) {
 
     header {
-        padding: 10px 50px;
+        padding: 10px 20px;
     }
 
     nav {
@@ -220,7 +220,7 @@ footer {
     .footer-content {
         flex-direction: column;
         gap: 20px;
-        padding: 50px;
+        padding: 50px 20px;
     }
 
     .footer-item {
