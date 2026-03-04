@@ -5,8 +5,10 @@
 
 @section('content')
 
-    <section class="page-banner">
-        <h1>{{ $kegiatan->judul }}</h1>
+    <section class="page-banners">
+        <div class="page-banner">
+            <h1>{{ $kegiatan->judul }}</h1>
+        </div>
     </section>
 
     <section class="detail-berita">
