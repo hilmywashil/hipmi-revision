@@ -8,6 +8,7 @@ use App\Models\Organisasi;
 use App\Models\Anggota;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Auth;
 
 class OrganisasiController extends Controller
 {
@@ -15,7 +16,7 @@ class OrganisasiController extends Controller
     {
         // Eager load anggota untuk menghindari N+1 query
         $organisasi = Organisasi::with('anggota')->ordered()->get();
-        
+
         return view('admin.organisasi.index', [
             'activeMenu' => 'organisasi',
             'organisasi' => $organisasi
@@ -78,13 +79,13 @@ class OrganisasiController extends Controller
     }
 
     public function edit(Organisasi $organisasi)
-    {   
+    {
         // Ambil anggota yang sudah approved dan belum masuk organisasi
         // ATAU anggota yang saat ini terpilih
         $anggotaList = Anggota::approved()
-            ->where(function($query) use ($organisasi) {
+            ->where(function ($query) use ($organisasi) {
                 $query->whereDoesntHave('organisasi')
-                      ->orWhere('id', $organisasi->anggota_id);
+                    ->orWhere('id', $organisasi->anggota_id);
             })
             ->orderBy('nama_usaha', 'asc')
             ->get();
@@ -157,10 +158,32 @@ class OrganisasiController extends Controller
     /**
      * Get detail organisasi untuk modal (AJAX)
      */
+
     public function show(Organisasi $organisasi)
     {
         $organisasi->load('anggota');
-        
+
+        $anggotaData = null;
+
+        if ($organisasi->anggota) {
+
+            // Data umum (boleh dilihat semua)
+            $anggotaData = [
+                'nama_usaha_perusahaan' => $organisasi->anggota->nama_usaha_perusahaan,
+            ];
+
+            // 🔐 HANYA LOGIN YANG BOLEH LIHAT KONTAK
+            if (
+                Auth::guard('admin')->check() ||
+                Auth::guard('anggota')->check() ||
+                Auth::guard('web')->check()
+            ) {
+                $anggotaData['email'] = $organisasi->anggota->email;
+                $anggotaData['nomor_telepon'] = $organisasi->anggota->nomor_telepon;
+                $anggotaData['alamat_kantor'] = $organisasi->anggota->alamat_kantor;
+            }
+        }
+
         return response()->json([
             'success' => true,
             'data' => [
@@ -171,12 +194,7 @@ class OrganisasiController extends Controller
                 'bidang_usaha' => $organisasi->bidang_usaha,
                 'detail_kegiatan' => $organisasi->detail_kegiatan,
                 'profile_perusahaan_url' => $organisasi->profile_perusahaan_url,
-                'anggota' => $organisasi->anggota ? [
-                    'nama_usaha_perusahaan' => $organisasi->anggota->nama_usaha_perusahaan,
-                    'email' => $organisasi->anggota->email,
-                    'nomor_telepon' => $organisasi->anggota->nomor_telepon,
-                    'alamat_kantor' => $organisasi->anggota->alamat_kantor,
-                ] : null
+                'anggota' => $anggotaData
             ]
         ]);
     }
