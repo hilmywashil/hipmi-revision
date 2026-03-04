@@ -1,15 +1,15 @@
 /* Strategic Plan Section */
 .strategic-plan {
     width: 100%;
-    padding: 60px 0;
+    padding: 100px 50px;
 }
 
 .strategic-plan-content,
 .strategic-plan-content-reverse {
     display: flex;
     align-items: center;
-    gap: 40px;
-    max-width: 1200px;
+    gap: 20px;
+    max-width: 1400px;
     margin: 0 auto 80px;
     padding: 0 20px;
 }
