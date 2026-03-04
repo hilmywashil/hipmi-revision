@@ -4,12 +4,31 @@
 html {
     scroll-behavior: smooth;
 }
-    h1, h2, h3, h4, h5, h6,
-    p, span, a, small, strong, em, label,
-    li, ul, ol,
-    button, input, textarea, select, option {
-        font-family: 'Poppins', sans-serif;
-    }
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+span,
+a,
+small,
+strong,
+em,
+label,
+li,
+ul,
+ol,
+button,
+input,
+textarea,
+select,
+option {
+    font-family: 'Poppins', sans-serif;
+}
+
 .anggota-carousel .owl-nav {
     position: absolute;
     top: 50%;
@@ -201,12 +220,21 @@ body {
 /* ================== END BUTTONS ================== */
 
 /* ================== GLOBAL CONTAINERS ================== */
+.page-banners {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 50px;
+}
+
 .page-banner {
     color: #04293B;
-    padding: 50px;
     display: flex;
     flex-direction: column;
     justify-content: center;
+    width: 100%;
+    max-width: 1400px;
 }
 
 .page-banner-2 {

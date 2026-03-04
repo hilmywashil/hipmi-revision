@@ -8,6 +8,8 @@
         padding: 0px 100px;
         display: flex;
         flex-direction: column;
+        justify-content: center;
+        align-items: center;
     }
 
     .search-box {
@@ -34,9 +36,11 @@
 
 
 @section('content')
-    <section class="page-banner">
+    <section class="page-banners">
+                <div class="page-banner">
         <h1>Buku Informasi Anggota</h1>
         <p>Berisi informasi mengenai anggota kami</p>
+        </div>
     </section>
 
     <section class="search-katalog">
@@ -217,7 +221,7 @@
 
         .buku-card img {
             width: 100%;
-            height: 250px;
+            height: 200px;
             object-fit: cover;
             object-position: center;
             background-color: #f0f0f0;
