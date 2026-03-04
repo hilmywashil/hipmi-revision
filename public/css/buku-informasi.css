@@ -1,0 +1,41 @@
+.bukus-informasi-anggota{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 50px;
+}
+
+.buku-informasi-anggota {
+    width: 100%;
+    max-width: 1400px;
+}
+
+.buku-filter {
+    display: flex;
+    flex-direction: row;
+    gap: 30px;
+}
+
+.buku-informasi-anggota-content {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 30px
+}
+
+.buku-informasi-anggota-content a {
+    text-decoration: none;
+    color: #04293B;
+}
+
+@media (max-width: 1024px) {
+    .bukus-informasi-anggota {
+        padding: 20px;
+    }
+
+    .buku-informasi-anggota-content {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px
+    }
+
+}

@@ -1,0 +1,621 @@
+/* ========================================
+   ORGANISASI SECTION - MAIN STYLES
+======================================== */
+.organisasi {
+    display: flex;
+    flex-direction: column;
+    padding: 0 50px 100px 50px;
+    text-align: center;
+    align-items: center;
+}
+
+.organisasi>h2 {
+    margin-bottom: 50px;
+}
+
+.organisasi-layout1 {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 100px;
+}
+
+.organisasi a {
+    text-decoration: none;
+    color: #04293B;
+}
+
+/* ========================================
+   CARD STYLES
+======================================== */
+
+/* Card Default (untuk Ketua Umum) */
+.organisasi-card {
+    width: auto;
+    padding: 30px;
+    text-align: center;
+    border: 1px solid #04293B;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s;
+}
+
+/* Card Kecil (untuk semua posisi selain Ketua Umum) */
+.organisasi-card-small {
+    width: auto;
+    padding: 30px;
+    text-align: center;
+    border: 1px solid #04293B;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s;
+}
+
+.org-heading {
+    margin-bottom: 30px;
+}
+
+.organisasi-card:hover,
+.organisasi-card-small:hover {
+    transform: translateY(-5px);
+    cursor: pointer;
+}
+
+/* Image Ketua Umum (Besar) */
+.organisasi-card img {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    margin-bottom: 20px;
+    border: #04293B 1px solid;
+    border-radius: 10px;
+}
+
+/* Image Posisi Lainnya (Lebih Kecil) */
+.organisasi-card-small img {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    margin-bottom: 15px;
+    border: #04293B 1px solid;
+    border-radius: 10px;
+}
+
+.organisasi-card h4,
+.organisasi-card-small h4 {
+    font-size: 15px;
+    margin-bottom: 10px;
+}
+
+.organisasi-card p,
+.organisasi-card-small p {
+    font-size: 12px;
+}
+
+.organisasi-card .container,
+.organisasi-card-small .container {
+    padding: 0 10px;
+}
+
+/* ========================================
+   LAYOUT GRID
+======================================== */
+.organisasi-layout2 {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 100px;
+    width: 100%;
+    max-width: 1400px;
+}
+
+.organisasi-layout2-content {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 20px;
+}
+
+/* Center ketika cuma 1 item (Ketua Umum) */
+.organisasi-layout2-content.center-single {
+    display: flex;
+    justify-content: center;
+}
+
+/* ========================================
+   PAGINATION STYLES
+======================================== */
+.pagination-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin-top: 30px;
+}
+
+.pagination-btn {
+    background: #04293B;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 600;
+    transition: all 0.3s;
+}
+
+.pagination-btn:hover:not(:disabled) {
+    background: #063a52;
+    transform: translateY(-2px);
+}
+
+.pagination-btn:disabled {
+    background: #ccc;
+    cursor: not-allowed;
+    opacity: 0.6;
+}
+
+.pagination-info {
+    font-size: 14px;
+    color: #04293B;
+    font-weight: 600;
+    padding: 0 15px;
+}
+
+.pagination-dots {
+    display: flex;
+    gap: 8px;
+    margin-top: 20px;
+    justify-content: center;
+}
+
+.pagination-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #ccc;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.pagination-dot.active {
+    background: #04293B;
+    width: 30px;
+    border-radius: 5px;
+}
+
+/* ========================================
+   MODAL OVERLAY
+======================================== */
+.modal-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 9999;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    backdrop-filter: blur(4px);
+}
+
+.modal-overlay.active {
+    display: flex;
+}
+
+/* ========================================
+   MODAL LANDSCAPE LAYOUT
+======================================== */
+.modal-content-landscape {
+    background: white;
+    border-radius: 20px;
+    max-width: 900px;
+    width: 100%;
+    max-height: 90vh;
+    overflow: hidden;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    animation: modalSlideUp 0.3s ease;
+    position: relative;
+    display: flex;
+    flex-direction: row;
+}
+
+@keyframes modalSlideUp {
+    from {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ========================================
+   MODAL CLOSE BUTTON
+======================================== */
+.modal-close {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: rgba(255, 255, 255, 0.95);
+    border: none;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+    z-index: 10;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.modal-close:hover {
+    background: white;
+    transform: rotate(90deg);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+}
+
+.modal-close svg {
+    width: 20px;
+    height: 20px;
+    stroke: #04293B;
+}
+
+/* ========================================
+   MODAL LEFT SECTION (FOTO & HEADER)
+======================================== */
+.modal-left {
+    flex: 0 0 380px;
+    display: flex;
+    flex-direction: column;
+    background: #04293B;
+}
+
+/* Header dengan Logo */
+.modal-header {
+    background: #04293B;
+    padding: 1.5rem;
+    position: relative;
+    z-index: 2;
+}
+
+.modal-header-content {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.modal-logo {
+    width: 50px;
+    height: 50px;
+    object-fit: contain;
+}
+
+.modal-header-text {
+    display: flex;
+    flex-direction: column;
+}
+
+.modal-org-name {
+    color: white;
+    font-size: 1.5rem;
+    font-weight: 700;
+    line-height: 1;
+    letter-spacing: 1px;
+}
+
+.modal-org-region {
+    color: #FDB515;
+    font-size: 0.875rem;
+    font-weight: 600;
+    letter-spacing: 2px;
+    margin-top: 0.25rem;
+}
+
+/* Photo Container dengan Diagonal Design */
+.modal-photo-container {
+    position: relative;
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    background: linear-gradient(135deg, #04293B 0%, #04293B 50%, #063a52 50%, #063a52 100%);
+}
+
+.modal-diagonal-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, #04293B 0%, #04293B 48%, #063a52 52%, #063a52 100%);
+}
+
+.modal-diagonal-bg::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 150px;
+    height: 100px;
+    background: linear-gradient(135deg, transparent 0%, transparent 50%, #6DBAED 50%, #6DBAED 100%);
+}
+
+.modal-diagonal-bg::after {
+    content: '';
+    position: absolute;
+    bottom: 30px;
+    right: 30px;
+    width: 100px;
+    height: 70px;
+    background: linear-gradient(135deg, transparent 0%, transparent 50%, #6DBAED 50%, #6DBAED 100%);
+    opacity: 0.7;
+}
+
+.modal-photo-circle {
+    position: relative;
+    z-index: 2;
+    width: 220px;
+    height: 220px;
+    border-radius: 50%;
+    border: 6px solid #6DBAED;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.modal-photo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* ========================================
+   MODAL RIGHT SECTION (DETAIL INFO)
+======================================== */
+.modal-right {
+    flex: 1;
+    padding: 2rem;
+    overflow-y: auto;
+    background: white;
+}
+
+.modal-right-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #04293B;
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 3px solid #6DBAED;
+}
+
+/* Detail Sections */
+.modal-details {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.detail-section {
+    padding: 1rem;
+    background: #f8f9fa;
+    border-radius: 10px;
+    border-left: 4px solid #6DBAED;
+    transition: all 0.3s;
+}
+
+.detail-section:hover {
+    background: #e9ecef;
+    border-left-color: #04293B;
+    transform: translateX(5px);
+}
+
+.detail-title {
+    font-size: 0.875rem;
+    font-weight: 700;
+    color: #04293B;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.detail-title svg {
+    width: 16px;
+    height: 16px;
+    fill: #6DBAED;
+}
+
+.detail-text {
+    font-size: 1rem;
+    color: #333;
+    line-height: 1.6;
+    margin: 0;
+}
+
+.detail-text p {
+    margin: 0.25rem 0;
+}
+
+.detail-text strong {
+    color: #04293B;
+    font-weight: 600;
+}
+
+/* ========================================
+   CUSTOM SCROLLBAR
+======================================== */
+.modal-right::-webkit-scrollbar {
+    width: 8px;
+}
+
+.modal-right::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 10px;
+}
+
+.modal-right::-webkit-scrollbar-thumb {
+    background: #6DBAED;
+    border-radius: 10px;
+}
+
+.modal-right::-webkit-scrollbar-thumb:hover {
+    background: #04293B;
+}
+
+/* ========================================
+   RESPONSIVE DESIGN - TABLET
+======================================== */
+@media (max-width: 1024px) {
+    .organisasi {
+        display: flex;
+        flex-direction: column;
+        padding: 30px;
+        text-align: center;
+        align-items: center;
+    }
+
+    .organisasi-card {
+        padding: 20px;
+    }
+
+    .organisasi-card-small {
+        padding: 18px;
+    }
+
+    .organisasi-card img {
+        width: 160px;
+        height: 160px;
+        margin-bottom: 15px;
+    }
+
+    .organisasi-card-small img {
+        width: 130px;
+        height: 130px;
+        margin-bottom: 12px;
+    }
+
+    .organisasi-card h4,
+    .organisasi-card-small h4 {
+        font-size: 15px;
+    }
+
+    .organisasi-card p,
+    .organisasi-card-small p {
+        font-size: 14px;
+    }
+
+    .organisasi-layout2 {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 100px;
+    }
+
+    .organisasi-layout2-content {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+    }
+
+    .pagination-btn {
+        padding: 8px 15px;
+        font-size: 13px;
+    }
+}
+
+/* ========================================
+   RESPONSIVE DESIGN - MOBILE LANDSCAPE
+======================================== */
+@media (max-width: 768px) {
+    .modal-content-landscape {
+        flex-direction: column;
+        max-width: 95%;
+        max-height: 85vh;
+    }
+
+    .modal-left {
+        flex: 0 0 auto;
+    }
+
+    .modal-header {
+        padding: 1rem;
+    }
+
+    .modal-logo {
+        width: 40px;
+        height: 40px;
+    }
+
+    .modal-org-name {
+        font-size: 1.25rem;
+    }
+
+    .modal-org-region {
+        font-size: 0.75rem;
+    }
+
+    .modal-photo-container {
+        height: 250px;
+    }
+
+    .modal-photo-circle {
+        width: 160px;
+        height: 160px;
+        border-width: 5px;
+    }
+
+    .modal-right {
+        padding: 1.5rem;
+        max-height: 300px;
+    }
+
+    .modal-right-title {
+        font-size: 1.25rem;
+        margin-bottom: 1rem;
+    }
+
+    .detail-section {
+        padding: 0.75rem;
+    }
+
+    .detail-title {
+        font-size: 0.75rem;
+    }
+
+    .detail-text {
+        font-size: 0.9rem;
+    }
+}
+
+/* ========================================
+   RESPONSIVE DESIGN - MOBILE PORTRAIT
+======================================== */
+@media (max-width: 480px) {
+    .modal-content-landscape {
+        margin: 0.5rem;
+    }
+
+    .modal-photo-container {
+        height: 220px;
+    }
+
+    .modal-photo-circle {
+        width: 140px;
+        height: 140px;
+    }
+
+    .modal-right {
+        padding: 1rem;
+    }
+
+    .detail-section {
+        padding: 0.5rem;
+    }
+}
