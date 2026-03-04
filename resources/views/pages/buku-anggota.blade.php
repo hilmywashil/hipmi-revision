@@ -217,7 +217,7 @@
 
         .buku-card img {
             width: 100%;
-            height: 280px;
+            height: 250px;
             object-fit: cover;
             object-position: center;
             background-color: #f0f0f0;

@@ -765,7 +765,7 @@ background-color: #f9f9f9;
 
 .e-katalog-content-home {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(5, 1fr);
     gap: 40px;
 }
 
@@ -1089,7 +1089,7 @@ background-color: #f9f9f9;
 }
 
 .buku-card {
-    padding: 50px;
+    padding: 30px;
     text-align: center;
     border: 1px solid #04293B;
     border-radius: 8px;
