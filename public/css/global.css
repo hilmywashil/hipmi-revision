@@ -313,3 +313,61 @@ body {
         font-size: 15px;
     }
 }
+
+.search-bars {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 50px;
+}
+
+.search-bar {
+    width: 100%;
+    max-width: 1400px;
+}
+
+.search-box {
+    position: relative;
+    /* WAJIB untuk absolute icon */
+    width: 100%;
+}
+
+.search-box input {
+    width: 100%;
+    font-family: 'Poppins', sans-serif;
+    font-size: 15px;
+    padding: 12px 45px 12px 15px;
+    /* space kanan buat icon */
+    border-radius: 8px;
+    border: 1px solid #04293B;
+    outline: none;
+    transition: 0.2s ease-in-out;
+}
+
+.search-box input:focus {
+    border-color: #0a5c80;
+    box-shadow: 0 0 0 2px rgba(4, 41, 59, 0.1);
+}
+
+.search-btn {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    color: #04293B;
+}
+
+.search-btn:hover {
+    color: #0a5c80;
+}
+
+@media (max-width: 1024px) {
+    .search-bars {
+        padding: 0 20px;
+    }
+}

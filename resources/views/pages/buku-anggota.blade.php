@@ -3,37 +3,6 @@
 @section('title', 'Buku Informasi Pengurus - HIPMI Jawa Barat')
 <link rel="stylesheet" 
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
-<style>
-    .search-katalog {
-        padding: 0px 100px;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-    }
-
-    .search-box {
-        position: relative;
-        width: 100%;
-    }
-
-    .search-box input {
-        width: 100%;
-        font-family: 'Poppins', sans-serif;
-        font-size: 15px;
-        padding: 10px 40px 10px 15px;
-        border-radius: 7px;
-        border: 1px solid #04293B;
-    }
-
-    .search-box i {
-        position: absolute;
-        right: 12px;
-        top: 50%;
-        transform: translateY(-50%);
-    }
-</style>
-
 
 @section('content')
     <section class="page-banners">
@@ -43,15 +12,21 @@
         </div>
     </section>
 
-    <section class="search-katalog">
+<section class="search-bars">
+    <div class="search-bar">
         <form action="{{ route('buku-anggota') }}" method="GET" class="search-box">
-            <input type="text" name="search" placeholder="Cari Anggota..." value="{{ request('search') }}">
-            <button type="submit" style="background: none; border: none; cursor: pointer;">
+            <input 
+                type="text" 
+                name="search" 
+                placeholder="Cari Anggota..." 
+                value="{{ request('search') }}"
+            >
+            <button type="submit" class="search-btn">
                 <i class="fas fa-search"></i>
             </button>
         </form>
-    </section>
-
+    </div>
+</section>
 <section class="bukus-informasi-anggota">
     <div class="buku-informasi-anggota">
         <div class="buku-informasi-anggota-content">
