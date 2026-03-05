@@ -124,15 +124,21 @@ nav {
 /* ================== FOOTER ================== */
 footer {
     width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     background-color: #ffffff;
     color: #04293B;
     text-align: center;
+    padding: 100px 50px;
+
 }
 
 .footer-content {
     display: flex;
+    width: 100%;
+    max-width: 1400px;
     flex-direction: row;
-    padding: 100px;
     gap: 100px;
     justify-content: space-between;
 }
@@ -217,10 +223,13 @@ footer {
 
 @media (max-width: 1024px) {
 
+    footer {
+        padding: 50px 20px;
+    }
+
     .footer-content {
         flex-direction: column;
         gap: 20px;
-        padding: 50px 20px;
     }
 
     .footer-item {
