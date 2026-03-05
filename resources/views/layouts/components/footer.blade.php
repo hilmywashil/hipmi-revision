@@ -14,7 +14,7 @@
                     <h3>Sekretariat</h3>
                     <div class="footer-item-child">
                         <i class="fa fa-map-marker footer-social-icons"></i>
-                        <p>Sekretariat Pusat, Jalan Bakti I No. 5, South Jakarta 12160, Indonesia </p>
+                        <p>Siliwangi Golf Lt. 2, Jl. Lombok No.10, Merdeka, Kec. Sumur Bandung, Kota Bandung, Jawa Barat 40113</p>
                     </div>
                 </div>
                 <div>
