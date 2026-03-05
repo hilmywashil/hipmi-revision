@@ -16,7 +16,8 @@
             {{-- Info Metadata --}}
             <div class="kegiatan-meta">
                 <div class="meta-item">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
                         <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
                         <line x1="16" y1="2" x2="16" y2="6"></line>
                         <line x1="8" y1="2" x2="8" y2="6"></line>
@@ -25,20 +26,21 @@
                     <span>{{ $kegiatan->tanggal_publish->format('d F Y') }}</span>
                 </div>
                 <div class="meta-item">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
                         <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
                         <circle cx="9" cy="7" r="4"></circle>
                         <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
                         <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
                     </svg>
-                   <span>Diterbitkan oleh <strong>{{ $kegiatan->bidang_name }}</strong></span>
+                    <span>Diterbitkan oleh <strong>{{ $kegiatan->bidang_name }}</strong></span>
                 </div>
             </div>
 
             <div class="thumbnail-wrapper">
                 <img src="{{ asset('storage/' . $kegiatan->gambar) }}" alt="{{ $kegiatan->judul }}">
             </div>
-            
+
             {{-- Tampilkan konten dengan HTML formatting --}}
             <div class="konten-kegiatan">
                 {!! $kegiatan->konten !!}
@@ -46,118 +48,127 @@
 
             {{-- Carousel Dokumentasi --}}
             @if($kegiatan->gambar_dokumentasi && count($kegiatan->gambar_dokumentasi) > 0)
-            <div class="dokumentasi-section">
-                <h2 class="dokumentasi-title">Dokumentasi Kegiatan</h2>
-                
-                <div class="carousel-container">
-                    <div class="carousel-wrapper">
-                        @foreach($kegiatan->gambar_dokumentasi as $index => $gambar)
-                        <div class="carousel-slide {{ $index === 0 ? 'active' : '' }}">
-                            <img src="{{ asset('storage/' . $gambar) }}" 
-                                 alt="Dokumentasi {{ $index + 1 }}"
-                                 onclick="openLightbox({{ $index }})">
+                <div class="dokumentasi-section">
+                    <h2 class="dokumentasi-title">Dokumentasi Kegiatan</h2>
+
+                    <div class="carousel-container">
+                        <div class="carousel-wrapper">
+                            @foreach($kegiatan->gambar_dokumentasi as $index => $gambar)
+                                <div class="carousel-slide {{ $index === 0 ? 'active' : '' }}">
+                                    <img src="{{ asset('storage/' . $gambar) }}" alt="Dokumentasi {{ $index + 1 }}"
+                                        onclick="openLightbox({{ $index }})">
+                                </div>
+                            @endforeach
                         </div>
-                        @endforeach
-                    </div>
 
-                    {{-- Navigation Buttons --}}
-                    @if(count($kegiatan->gambar_dokumentasi) > 1)
-                    <button class="carousel-btn carousel-prev" onclick="moveCarousel(-1)">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <polyline points="15 18 9 12 15 6"></polyline>
-                        </svg>
-                    </button>
-                    <button class="carousel-btn carousel-next" onclick="moveCarousel(1)">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <polyline points="9 18 15 12 9 6"></polyline>
-                        </svg>
-                    </button>
+                        {{-- Navigation Buttons --}}
+                        @if(count($kegiatan->gambar_dokumentasi) > 1)
+                            <button class="carousel-btn carousel-prev" onclick="moveCarousel(-1)">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <polyline points="15 18 9 12 15 6"></polyline>
+                                </svg>
+                            </button>
+                            <button class="carousel-btn carousel-next" onclick="moveCarousel(1)">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <polyline points="9 18 15 12 9 6"></polyline>
+                                </svg>
+                            </button>
 
-                    {{-- Dots Indicator --}}
-                    <div class="carousel-dots">
-                        @foreach($kegiatan->gambar_dokumentasi as $index => $gambar)
-                        <span class="dot {{ $index === 0 ? 'active' : '' }}" onclick="goToSlide({{ $index }})"></span>
-                        @endforeach
-                    </div>
+                            {{-- Dots Indicator --}}
+                            <div class="carousel-dots">
+                                @foreach($kegiatan->gambar_dokumentasi as $index => $gambar)
+                                    <span class="dot {{ $index === 0 ? 'active' : '' }}" onclick="goToSlide({{ $index }})"></span>
+                                @endforeach
+                            </div>
 
-                    {{-- Counter --}}
-                    <div class="carousel-counter">
-                        <span id="current-slide">1</span> / {{ count($kegiatan->gambar_dokumentasi) }}
+                            {{-- Counter --}}
+                            <div class="carousel-counter">
+                                <span id="current-slide">1</span> / {{ count($kegiatan->gambar_dokumentasi) }}
+                            </div>
+                        @endif
                     </div>
-                    @endif
                 </div>
-            </div>
             @endif
         </div>
-        
+
         <div class="berita-detail-right">
             {{-- Kegiatan Populer --}}
-<div class="sidebar-section">
-    <h1 class="berita-badge">Kegiatan Populer</h1>
-    
-    @forelse($kegiatanPopuler as $item)
-    <div class="berita-detail-right-item" style="margin-bottom: 2rem;">
-        <a href="{{ route('detail-kegiatan', $item->slug) }}" class="berita-detail-right-item-image" style="position: relative;">
-            <img src="{{ asset('storage/' . $item->gambar) }}" alt="{{ $item->judul }}">
-            
-            {{-- Badge Bidang di pojok kanan atas --}}
-            <span class="bidang-badge" style="position: absolute; top: 0.5rem; right: 0.5rem; margin-bottom: 0;">
-                {{ $item->bidang_name }}
-            </span>
-            
-            <div class="image-overlay">
-                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
-                    <circle cx="12" cy="12" r="3"></circle>
-                </svg>
-            </div>
-        </a>
-        <div class="berita-detail-right-item-content">
-            <div>
-                <span class="berita-home-date" style="margin-bottom: 0.5rem; display: block;">{{ $item->tanggal_publish->format('F d, Y') }}</span>
-                <h3>{{ $item->judul }}</h3>
-                <p>{{ Str::limit(strip_tags($item->konten), 100, '...') }}</p>
-            </div>
-        </div>
-    </div>
-    @empty
-    <p style="text-align: center; color: #6b7280; padding: 1rem;">Belum ada kegiatan populer</p>
-    @endforelse
-</div>
+            <div class="sidebar-section">
+                <h1 class="berita-badge">Kegiatan Populer</h1>
 
-{{-- Kegiatan Lainnya --}}
-<div class="sidebar-section">
-    <h1 class="berita-badge">Kegiatan Lainnya</h1>
-    
-    @forelse($kegiatanLainnya as $item)
-    <div class="berita-detail-right-item" style="margin-bottom: 2rem;">
-        <a href="{{ route('detail-kegiatan', $item->slug) }}" class="berita-detail-right-item-image" style="position: relative;">
-            <img src="{{ asset('storage/' . $item->gambar) }}" alt="{{ $item->judul }}">
-            
-            {{-- Badge Bidang di pojok kanan atas --}}
-            <span class="bidang-badge" style="position: absolute; top: 0.5rem; right: 0.5rem; margin-bottom: 0;">
-                {{ $item->bidang_name }}
-            </span>
-            
-            <div class="image-overlay">
-                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
-                    <circle cx="12" cy="12" r="3"></circle>
-                </svg>
+                @forelse($kegiatanPopuler as $item)
+                    <div class="berita-detail-right-item" style="margin-bottom: 2rem;">
+                        <a href="{{ route('detail-kegiatan', $item->slug) }}" class="berita-detail-right-item-image"
+                            style="position: relative;">
+                            <img src="{{ asset('storage/' . $item->gambar) }}" alt="{{ $item->judul }}">
+
+                            {{-- Badge Bidang di pojok kanan atas --}}
+                            <span class="bidang-badge"
+                                style="position: absolute; top: 0.5rem; right: 0.5rem; margin-bottom: 0;">
+                                {{ $item->bidang_name }}
+                            </span>
+
+                            <div class="image-overlay">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none"
+                                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                                    <circle cx="12" cy="12" r="3"></circle>
+                                </svg>
+                            </div>
+                        </a>
+                        <div class="berita-detail-right-item-content">
+                            <div>
+                                <span class="berita-home-date"
+                                    style="margin-bottom: 0.5rem; display: block;">{{ $item->tanggal_publish->format('F d, Y') }}</span>
+                                <h3>{{ $item->judul }}</h3>
+                                <p>{{ Str::limit(strip_tags($item->konten), 100, '...') }}</p>
+                            </div>
+                        </div>
+                    </div>
+                @empty
+                    <p style="text-align: center; color: #6b7280; padding: 1rem;">Belum ada kegiatan populer</p>
+                @endforelse
             </div>
-        </a>
-        <div class="berita-detail-right-item-content">
-            <div>
-                <span class="berita-home-date" style="margin-bottom: 0.5rem; display: block;">{{ $item->tanggal_publish->format('F d, Y') }}</span>
-                <h3>{{ $item->judul }}</h3>
-                <p>{{ Str::limit(strip_tags($item->konten), 100, '...') }}</p>
+
+            {{-- Kegiatan Lainnya --}}
+            <div class="sidebar-section">
+                <h1 class="berita-badge">Kegiatan Lainnya</h1>
+
+                @forelse($kegiatanLainnya as $item)
+                    <div class="berita-detail-right-item" style="margin-bottom: 2rem;">
+                        <a href="{{ route('detail-kegiatan', $item->slug) }}" class="berita-detail-right-item-image"
+                            style="position: relative;">
+                            <img src="{{ asset('storage/' . $item->gambar) }}" alt="{{ $item->judul }}">
+
+                            {{-- Badge Bidang di pojok kanan atas --}}
+                            <span class="bidang-badge"
+                                style="position: absolute; top: 0.5rem; right: 0.5rem; margin-bottom: 0;">
+                                {{ $item->bidang_name }}
+                            </span>
+
+                            <div class="image-overlay">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none"
+                                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                                    <circle cx="12" cy="12" r="3"></circle>
+                                </svg>
+                            </div>
+                        </a>
+                        <div class="berita-detail-right-item-content">
+                            <div>
+                                <span class="berita-home-date"
+                                    style="margin-bottom: 0.5rem; display: block;">{{ $item->tanggal_publish->format('F d, Y') }}</span>
+                                <h3>{{ $item->judul }}</h3>
+                                <p>{{ Str::limit(strip_tags($item->konten), 100, '...') }}</p>
+                            </div>
+                        </div>
+                    </div>
+                @empty
+                    <p style="text-align: center; color: #6b7280; padding: 1rem;">Belum ada kegiatan lainnya</p>
+                @endforelse
             </div>
-        </div>
-    </div>
-    @empty
-    <p style="text-align: center; color: #6b7280; padding: 1rem;">Belum ada kegiatan lainnya</p>
-    @endforelse
-</div>
         </div>
     </section>
 
@@ -171,6 +182,243 @@
     </div>
 
     <style>
+        .berita-wr {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 50px;
+        }
+
+        .berita {
+            width: 100%;
+            max-width: 1400px;
+            display: flex;
+            flex-direction: row;
+            gap: 50px;
+        }
+
+        .berita-left {
+            width: 65%;
+            display: flex;
+            flex-direction: column;
+            padding: 0px 0px 100px 0px;
+            gap: 25px;
+        }
+
+        .berita-item {
+            display: flex;
+            flex-direction: row;
+            gap: 15px;
+        }
+
+        .berita-item-image {
+            width: 300px;
+            height: 100%;
+        }
+
+        .berita-item-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 15px;
+        }
+
+        .berita-item-content {
+            flex: 1;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .berita-right {
+            width: 35%;
+            display: flex;
+            flex-direction: column;
+            padding: 0px 0px 100px 0px;
+            gap: 25px;
+        }
+
+        .berita-right-item {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .berita-right-item-image img {
+            width: 100%;
+            max-width: 500px;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 15px;
+        }
+
+        .berita-right-item-content {
+            padding: 20px 0px 0px 0px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .detail-berita {
+            display: flex;
+            flex-direction: row;
+            padding: 0px 100px 100px 100px;
+            gap: 50px;
+        }
+
+        .detail-berita-content {
+            width: 70%;
+            text-align: justify;
+        }
+
+        .detail-berita-content img {
+            width: 100%;
+            max-width: 1500px;
+            margin-bottom: 30px;
+            border-radius: 20px;
+        }
+
+        .berita-detail-right {
+            width: 30%;
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+
+        .berita-detail-right-item {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .berita-detail-right-item-image img {
+            width: 100%;
+            max-width: 500px;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 15px;
+        }
+
+        .berita-detail-right-item-content {
+            padding: 20px 0px 0px 0px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        @media (max-width: 1024px) {
+            .berita-wr {
+                padding: 50px 20px;
+            }
+
+            .berita {
+                display: flex;
+                flex-direction: column;
+                width: 100%;
+            }
+
+            .berita-left {
+                width: 100%;
+                display: flex;
+                flex-direction: column;
+                padding: 0px 0px 0px 0px;
+                gap: 25px;
+            }
+
+            .berita-item {
+                display: flex;
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .berita-item-image {
+                width: 100%;
+                height: auto;
+            }
+
+            .berita-item-image img {
+                width: 100%;
+                object-fit: cover;
+                border-radius: 15px;
+            }
+
+            .berita-item-content {
+                padding: 10px;
+                display: flex;
+                flex-direction: column;
+                justify-content: start;
+                gap: 20px;
+            }
+
+            .berita-right {
+                width: 100%;
+                padding: 0px 0px 0px 0px;
+
+            }
+
+            .berita-right h1 {
+                font-size: 25px;
+            }
+
+            .detail-berita {
+                display: flex;
+                flex-direction: column;
+                padding: 0px 20px 20px 20px;
+                gap: 50px;
+            }
+
+            .detail-berita-content {
+                width: 100%;
+                text-align: justify;
+            }
+
+            .berita-detail-right {
+                width: 100%;
+            }
+
+            .berita-detail-right-item {
+                display: flex;
+                flex-direction: column;
+            }
+
+            .berita-detail-right-item-image img {
+                width: 100%;
+                max-width: 500px;
+                height: 250px;
+                object-fit: cover;
+                border-radius: 15px;
+            }
+
+            .berita-detail-right-item-content {
+                padding: 20px 0px 0px 0px;
+                display: flex;
+                flex-direction: column;
+            }
+
+
+            /* Fix text overflow untuk berita */
+            .berita-item-content h3,
+            .berita-item-content p,
+            .berita-right-item-content h3,
+            .berita-right-item-content p,
+            .berita-detail-right-item-content h3,
+            .berita-detail-right-item-content p,
+            .detail-berita-content p,
+            .page-banner h1 {
+                word-wrap: break-word;
+                word-break: break-word;
+                overflow-wrap: break-word;
+                hyphens: auto;
+            }
+
+            /* Batasi lebar konten */
+            .berita-item-content,
+            .berita-right-item-content,
+            .berita-detail-right-item-content {
+                max-width: 100%;
+                overflow: hidden;
+            }
+        }
+
         /* Kegiatan Metadata */
         .kegiatan-meta {
             display: flex;
@@ -560,8 +808,13 @@
         }
 
         @keyframes zoom {
-            from { transform: translate(-50%, -50%) scale(0.8); }
-            to { transform: translate(-50%, -50%) scale(1); }
+            from {
+                transform: translate(-50%, -50%) scale(0.8);
+            }
+
+            to {
+                transform: translate(-50%, -50%) scale(1);
+            }
         }
 
         .lightbox-close {
@@ -727,36 +980,36 @@
         function moveCarousel(direction) {
             const slides = document.querySelectorAll('.carousel-slide');
             const dots = document.querySelectorAll('.dot');
-            
+
             slides[currentCarouselIndex].classList.remove('active');
             dots[currentCarouselIndex].classList.remove('active');
-            
+
             currentCarouselIndex += direction;
-            
+
             if (currentCarouselIndex >= slides.length) {
                 currentCarouselIndex = 0;
             } else if (currentCarouselIndex < 0) {
                 currentCarouselIndex = slides.length - 1;
             }
-            
+
             slides[currentCarouselIndex].classList.add('active');
             dots[currentCarouselIndex].classList.add('active');
-            
+
             document.getElementById('current-slide').textContent = currentCarouselIndex + 1;
         }
 
         function goToSlide(index) {
             const slides = document.querySelectorAll('.carousel-slide');
             const dots = document.querySelectorAll('.dot');
-            
+
             slides[currentCarouselIndex].classList.remove('active');
             dots[currentCarouselIndex].classList.remove('active');
-            
+
             currentCarouselIndex = index;
-            
+
             slides[currentCarouselIndex].classList.add('active');
             dots[currentCarouselIndex].classList.add('active');
-            
+
             document.getElementById('current-slide').textContent = currentCarouselIndex + 1;
         }
 
@@ -766,7 +1019,7 @@
             const lightbox = document.getElementById('lightbox');
             const img = document.getElementById('lightbox-img');
             const caption = document.getElementById('lightbox-caption');
-            
+
             lightbox.style.display = 'block';
             img.src = images[currentLightboxIndex];
             caption.textContent = `Dokumentasi ${currentLightboxIndex + 1} dari ${images.length}`;
@@ -780,24 +1033,24 @@
 
         function changeLightboxImage(direction) {
             currentLightboxIndex += direction;
-            
+
             if (currentLightboxIndex >= images.length) {
                 currentLightboxIndex = 0;
             } else if (currentLightboxIndex < 0) {
                 currentLightboxIndex = images.length - 1;
             }
-            
+
             const img = document.getElementById('lightbox-img');
             const caption = document.getElementById('lightbox-caption');
-            
+
             img.src = images[currentLightboxIndex];
             caption.textContent = `Dokumentasi ${currentLightboxIndex + 1} dari ${images.length}`;
         }
 
         // Keyboard Navigation
-        document.addEventListener('keydown', function(e) {
+        document.addEventListener('keydown', function (e) {
             const lightbox = document.getElementById('lightbox');
-            
+
             // Lightbox navigation
             if (lightbox.style.display === 'block') {
                 if (e.key === 'Escape') {
@@ -807,7 +1060,7 @@
                 } else if (e.key === 'ArrowRight') {
                     changeLightboxImage(1);
                 }
-            } 
+            }
             // Carousel navigation (when lightbox is closed)
             else {
                 if (e.key === 'ArrowLeft') {
@@ -823,13 +1076,13 @@
         let touchEndX = 0;
 
         const carouselWrapper = document.querySelector('.carousel-wrapper');
-        
+
         if (carouselWrapper) {
-            carouselWrapper.addEventListener('touchstart', function(e) {
+            carouselWrapper.addEventListener('touchstart', function (e) {
                 touchStartX = e.changedTouches[0].screenX;
             });
 
-            carouselWrapper.addEventListener('touchend', function(e) {
+            carouselWrapper.addEventListener('touchend', function (e) {
                 touchEndX = e.changedTouches[0].screenX;
                 handleSwipe();
             });
